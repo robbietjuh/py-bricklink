@@ -36,7 +36,10 @@ class Inventory(Method):
 
 
 class Catalog(Method):
-    pass
+    URL_CATALOG_ITEM = 'items/{type}/{no}'
+    URL_CATALOG_SUPERSETS = 'items/{type}/{no}/supersets'
+    URL_CATALOG_SUBSETS = 'items/{type}/{no}/subsets'
+    URL_CATELOG_PRICE_GUIDE = 'items/{type}/{no}/price'
 
 
 class Feedback(Method):
