@@ -27,7 +27,12 @@ class Orders(Method):
 
 
 class Inventory(Method):
-    pass
+    URL_INVENTORY_LIST = 'inventories'
+    URL_INVENTORY_DETAILS = 'inventories/{inventory_id}'
+    URL_INVENTORY_CREATE = 'inventories'
+    URL_INVENTORY_CREATE_BULK = 'inventories'
+    URL_INVENTORY_UPDATE = 'inventories/{inventory_id}'
+    URL_INVENTORY_DELETE = 'inventories/{inventory_id}'
 
 
 class Catalog(Method):
