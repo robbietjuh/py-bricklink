@@ -50,7 +50,8 @@ class Feedback(Method):
 
 
 class Color(Method):
-    pass
+    URL_COLOR_LIST = 'colors'
+    URL_COLOR_DETAIL = 'colors/{color_id}'
 
 
 class Category(Method):
