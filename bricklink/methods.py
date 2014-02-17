@@ -60,4 +60,4 @@ class Category(Method):
 
 
 class PushNotification(Method):
-    pass
+    URL_NOTIFICATION_LIST = 'notifications'
