@@ -6,6 +6,9 @@
 '''
 
 
+from exceptions import BricklinkInvalidParameterException
+
+
 class Method:
     client = None
 
@@ -14,7 +17,13 @@ class Method:
 
 
 class Orders(Method):
-    pass
+    URL_ORDER_LIST = 'orders'
+    URL_ORDER_DETAILS = 'orders/{order_id}'
+    URL_ORDER_ITEMS = 'orders/{order_id}/items'
+    URL_ORDER_MESSAGES = 'orders/{order_id}/messages'
+    URL_ORDER_FEEDBACK = 'orders/{order_id}/feedback'
+    URL_ORDER_UPDATE = 'orders/{order_id}'
+    URL_ORDER_UPDATE_STATUS = 'order/{order_id}/status'
 
 
 class Inventory(Method):

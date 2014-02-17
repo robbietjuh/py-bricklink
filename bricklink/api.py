@@ -50,13 +50,13 @@ class ApiClient:
         return self.processResponse(response)
 
     def get(self, url, params):
-        return self.request('GET', url, params)
+        return self.request('GET', url, params={})
 
     def post(self, url, params):
-        return self.request('POST', url, params)
+        return self.request('POST', url, params={})
 
     def put(self, url, params):
-        return self.request('PUT', url, params)
+        return self.request('PUT', url, params={})
 
     def delete(self, url, params):
-        return self.request('DELETE', url, params)
+        return self.request('DELETE', url, params={})
