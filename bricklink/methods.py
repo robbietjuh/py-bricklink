@@ -45,6 +45,10 @@ class Orders(Method):
     def getOrderFeedback(self, order_id):
         return self.client.get(self.URL_ORDER_FEEDBACK.format(order_id=order_id))
 
+    def updateOrder(self, order_id, order_resource):
+        params = order_resource
+        return self.client.get(self.URL_ORDER_UPDATE.format(order_id=order_id), params)
+
 
 class Inventory(Method):
     URL_INVENTORY_LIST = 'inventories'
