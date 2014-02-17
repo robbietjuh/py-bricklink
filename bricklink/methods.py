@@ -31,7 +31,7 @@ class Orders(Method):
             'status':       status,
             'filed':        filed,
         }
-        self.client.get(self.URL_ORDERS, params)
+        return self.client.get(self.URL_ORDERS, params)
 
 
 class Inventory(Method):
