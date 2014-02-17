@@ -21,23 +21,25 @@ class ApiClient:
         self.session = self.service.get_session((access_token, access_token_secret))
 
     def processResponse(self, response):
-        if not ('code', 'message', 'description', 'data') in response:
-            raise BricklinkInvalidResponseException('No status code in response')
+        if not 'meta' in response:
+            raise BricklinkInvalidResponseException('No meta and/or data key in response')
 
-        if response['code'] not in (200, 201, 204):
-            if response['message'] == 'INVALID_URI': raise BricklinkInvalidURIException(response['description'])
-            elif response['message'] == 'INVALID_REQUEST_BODY': raise BricklinkInvalidRequestBodyException(response['description'])
-            elif response['message'] == 'PARAMETER_MISSING_OR_INVALID': raise BricklinkParameterMissingOrInvalidException(response['description'])
-            elif response['message'] == 'BAD_OAUTH_REQUEST': raise BricklinkBadOauthRequestException(response['description'])
-            elif response['message'] == 'PERMISSION_DENIED': raise BricklinkPermissionDeniedException(response['description'])
-            elif response['message'] == 'RESOURCE_NOT_FOUND': raise BricklinkResourceNotFoundException(response['description'])
-            elif response['message'] == 'METHOD_NOT_ALLOWED': raise BricklinkMethodNotAllowedException(response['description'])
-            elif response['message'] == 'UNSUPPORTED_MEDIA_TYPE': raise BricklinkUnsupportedMediaTypeException(response['description'])
-            elif response['message'] == 'RESOURCE_UPDATE_NOT_ALLOWED': raise BricklinkResourceUpdateNotAllowedException(response['description'])
-            elif response['message'] == 'INTERNAL_SERVER_ERROR': raise BricklinkInternalServerErrorException(response['description'])
-            else: raise BricklinkUnspecifiedException(response['code'], response['message'], response['description'])
+        meta = response['meta']
+        if meta['code'] not in (200, 201, 204):
+            if meta['message'] == 'INVALID_URI': raise BricklinkInvalidURIException(meta['description'])
+            elif meta['message'] == 'INVALID_REQUEST_BODY': raise BricklinkInvalidRequestBodyException(meta['description'])
+            elif meta['message'] == 'PARAMETER_MISSING_OR_INVALID': raise BricklinkParameterMissingOrInvalidException(meta['description'])
+            elif meta['message'] == 'BAD_OAUTH_REQUEST': raise BricklinkBadOauthRequestException(meta['description'])
+            elif meta['message'] == 'PERMISSION_DENIED': raise BricklinkPermissionDeniedException(meta['description'])
+            elif meta['message'] == 'RESOURCE_NOT_FOUND': raise BricklinkResourceNotFoundException(meta['description'])
+            elif meta['message'] == 'METHOD_NOT_ALLOWED': raise BricklinkMethodNotAllowedException(meta['description'])
+            elif meta['message'] == 'UNSUPPORTED_MEDIA_TYPE': raise BricklinkUnsupportedMediaTypeException(meta['description'])
+            elif meta['message'] == 'RESOURCE_UPDATE_NOT_ALLOWED': raise BricklinkResourceUpdateNotAllowedException(meta['description'])
+            elif meta['message'] == 'INTERNAL_SERVER_ERROR': raise BricklinkInternalServerErrorException(meta['description'])
+            else: raise BricklinkUnspecifiedException(meta['code'], meta['message'], meta['description'])
 
-        return response['data']
+        data = response['data']
+        return data
 
     def get(self, url, params):
         response = self.session.request('GET', url, True, '', params=params).json()
