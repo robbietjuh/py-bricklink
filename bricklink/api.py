@@ -41,6 +41,18 @@ class ApiClient:
         data = response['data']
         return data
 
-    def get(self, url, params):
-        response = self.session.request('GET', url, True, '', params=params).json()
+    def request(self, method, url, params):
+        response = self.session.request(method, url, True, '', params=params).json()
         return self.processResponse(response)
+
+    def get(self, url, params):
+        return self.request('GET', url, params)
+
+    def post(self, url, params):
+        return self.request('POST', url, params)
+
+    def put(self, url, params):
+        return self.request('PUT', url, params)
+
+    def delete(self, url, params):
+        return self.request('DELETE', url, params)
