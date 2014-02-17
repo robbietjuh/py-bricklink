@@ -43,7 +43,10 @@ class Catalog(Method):
 
 
 class Feedback(Method):
-    pass
+    URL_FEEDBACK_LIST = 'feedback'
+    URL_FEEDBACK_DETAILS = 'feedback/{feedback_id}'
+    URL_FEEDBACK_CREATE = 'feedback'
+    URL_FEEDBACK_REPLY = 'feedback/{feedback_id}/reply'
 
 
 class Color(Method):
