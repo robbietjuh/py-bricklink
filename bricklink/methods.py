@@ -25,6 +25,14 @@ class Orders(Method):
     URL_ORDER_UPDATE = 'orders/{order_id}'
     URL_ORDER_UPDATE_STATUS = 'order/{order_id}/status'
 
+    def getOrders(self, direction='in', status='', filed=False):
+        params = {
+            'direction':    direction,
+            'status':       status,
+            'filed':        filed,
+        }
+        self.client.get(self.URL_ORDERS, params)
+
 
 class Inventory(Method):
     URL_INVENTORY_LIST = 'inventories'
