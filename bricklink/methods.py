@@ -42,6 +42,9 @@ class Orders(Method):
     def getOrderMessages(self, order_id):
         return self.client.get(self.URL_ORDER_MESSAGES.format(order_id=order_id))
 
+    def getOrderFeedback(self, order_id):
+        return self.client.get(self.URL_ORDER_FEEDBACK.format(order_id=order_id))
+
 
 class Inventory(Method):
     URL_INVENTORY_LIST = 'inventories'
