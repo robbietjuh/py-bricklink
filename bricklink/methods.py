@@ -34,6 +34,10 @@ class Orders(Method):
         return self.client.get(self.URL_ORDERS, params)
 
 
+    def getOrder(self, order_id):
+        self.client.get(self.URL_ORDER_DETAILS.format(order_id=order_id))
+
+
 class Inventory(Method):
     URL_INVENTORY_LIST = 'inventories'
     URL_INVENTORY_DETAILS = 'inventories/{inventory_id}'
