@@ -49,6 +49,22 @@ class Orders(Method):
         params = order_resource
         return self.client.get(self.URL_ORDER_UPDATE.format(order_id=order_id), params)
 
+    def updateOrderStatus(self, order_id, status):
+        ORDER_STATUSES = ('Pending', 'Updated',
+                          'Processing', 'Ready', 'Paid', 'Packed', 'Shipped', 'Received', 'Completed',
+                          'OCR', 'NPB', 'NPX', 'NRS', 'NSS', 'Cancelled',)
+
+        if not status in ORDER_STATUSES:
+            raise BricklinkInvalidParameterException('Invalid status. Should be one of {0}'.format(str(ORDER_STATUSES)),
+                                                     status)
+
+        params = {
+            'field':        'status',
+            'value':        status
+        }
+
+        return self.client.get(self.URL_ORDER_UPDATE.format(order_id=order_id), params)
+
 
 class Inventory(Method):
     URL_INVENTORY_LIST = 'inventories'
