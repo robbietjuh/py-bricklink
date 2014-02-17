@@ -7,6 +7,8 @@
 
 from exceptions import *
 
+from methods import Orders
+
 from rauth import OAuth1Service
 
 class ApiClient:
@@ -19,6 +21,8 @@ class ApiClient:
                                      base_url='https://api.bricklink.com/api/store/v1/')
 
         self.session = self.service.get_session((access_token, access_token_secret))
+
+        self.orders = Orders(self)
 
     def processResponse(self, response):
         if not 'meta' in response:
