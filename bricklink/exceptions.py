@@ -39,3 +39,6 @@ class BricklinkInternalServerErrorException(Exception): pass
 
 
 class BricklinkUnspecifiedException(Exception): pass
+
+
+class BricklinkInvalidParameterException(Exception): pass

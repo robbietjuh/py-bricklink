@@ -6,7 +6,7 @@
 '''
 
 
-#from exceptions import BricklinkInvalidParameterException
+from exceptions import BricklinkInvalidParameterException
 
 
 class Method:
