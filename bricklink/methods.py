@@ -6,7 +6,7 @@
 '''
 
 
-from exceptions import BricklinkInvalidParameterException
+#from exceptions import BricklinkInvalidParameterException
 
 
 class Method:
@@ -31,7 +31,7 @@ class Orders(Method):
             'status':       status,
             'filed':        filed,
         }
-        return self.client.get(self.URL_ORDERS, params)
+        return self.client.get(self.URL_ORDER_LIST, params)
 
     def getOrder(self, order_id):
         return self.client.get(self.URL_ORDER_DETAILS.format(order_id=order_id))
