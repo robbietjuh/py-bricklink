@@ -55,7 +55,8 @@ class Color(Method):
 
 
 class Category(Method):
-    pass
+    URL_CATEGORY_LIST = 'categories'
+    URL_CATEGORY_DETAIL = 'categories/{category_id}'
 
 
 class PushNotification(Method):
