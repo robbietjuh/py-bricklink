@@ -33,9 +33,11 @@ class Orders(Method):
         }
         return self.client.get(self.URL_ORDERS, params)
 
-
     def getOrder(self, order_id):
         return self.client.get(self.URL_ORDER_DETAILS.format(order_id=order_id))
+
+    def getOrderItems(self, order_id):
+        return self.client.get(self.URL_ORDER_ITEMS.format(order_id=order_id))
 
 
 class Inventory(Method):
