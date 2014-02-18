@@ -84,6 +84,10 @@ class Inventory(Method):
         return self.client.get(self.URL_INVENTORY_LIST, params)
 
 
+    def getInventory(inventory_id):
+        return self.client.get(self.URL_INVENTORY_DETAILS.format(inventory_id=inventory_id))
+
+
 class Catalog(Method):
     URL_CATALOG_ITEM = 'items/{type}/{no}'
     URL_CATALOG_SUPERSETS = 'items/{type}/{no}/supersets'
