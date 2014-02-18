@@ -74,6 +74,15 @@ class Inventory(Method):
     URL_INVENTORY_UPDATE = 'inventories/{inventory_id}'
     URL_INVENTORY_DELETE = 'inventories/{inventory_id}'
 
+    def getInventories(self, item_type='', status='', category_id=None, color_id=None)
+        params = {
+            'item_type':    item_type,
+            'status':       status,
+            'category_id':  category_id,
+            'color_id':     color_id,
+        }
+        return self.client.get(self.URL_INVENTORY_LIST, params)
+
 
 class Catalog(Method):
     URL_CATALOG_ITEM = 'items/{type}/{no}'
