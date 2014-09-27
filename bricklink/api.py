@@ -13,7 +13,7 @@ from urllib import urlencode
 import json
 
 class ApiClient:
-    def __init__(self, consumer_key, consumer_secret, access_token, access_token_secret)
+    def __init__(self, consumer_key, consumer_secret, access_token, access_token_secret):
         self.service = OAuth1Service(name='bricklink',
                                      consumer_key=consumer_key,
                                      consumer_secret=consumer_secret,
