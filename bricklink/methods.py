@@ -160,11 +160,11 @@ class Catalog(Method):
                                                      item_type)
 
         params = {
-            'color_id': color_id,
-            'box': box,
-            'instruction': instruction,
-            'break_minifigs': break_minifigs,
-            'break_subsets': break_subsets
+            # 'color_id': color_id,
+            # 'box': box,
+            # 'instruction': instruction,
+            # 'break_minifigs': break_minifigs,
+            # 'break_subsets': break_subsets
         }
 
         return self.client.get(self.URL_CATALOG_SUBSETS.format(type=item_type, no=item_no), params)
@@ -211,8 +211,17 @@ class Feedback(Method):
     def getFeedbackDetails(self, feedback_id):
         return self.client.get(self.URL_FEEDBACK_DETAILS.format(feedback_id=feedback_id))
 
-    def createFeedback(self):
-        raise Exception('Not yet implemented')
+    def createFeedback(self, order_id, rating, comment):
+        if rating < 0 or rating > 2:
+            raise BricklinkInvalidParameterException('Invalid rating. Should be between 0 and 2.')
+
+        params = {
+            'order_id': order_id,
+            'rating': rating,
+            'comment': comment
+        }
+
+        return self.client.post(self.URL_FEEDBACK_CREATE, params)
 
     def createFeedbackReply(self, feedback_id):
         raise Exception('Not yet implemented')
@@ -274,4 +283,3 @@ class Member(Method):
 
     def deleteNote(self, username):
         return self.client.delete(self.URL_NOTE_DELETE.format(username=username))
-
